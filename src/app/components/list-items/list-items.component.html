@@ -1,0 +1,106 @@
+<div class="container-fluid pt-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header ">
+                    <h3 class="text-center">
+                        Listado de Items
+                        <!-- <div *ngIf="loading" class="spinner-border text-primary float-end" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div> -->
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link active" id="antecedentes-tab" data-bs-toggle="tab" data-bs-target="#antecedentes" type="button" role="tab" aria-controls="antecedentes" aria-selected="true">Antecedentes</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                          <button class="nav-link" id="medicacionhabitual-tab" data-bs-toggle="tab" data-bs-target="#medicacionhabitual" type="button" role="tab" aria-controls="medicacionhabitual" aria-selected="false">Medicacion Habitual</button>
+                        </li>
+                        <li class="nav-item" role="tratamiento">
+                          <button class="nav-link" id="tratamiento-tab" data-bs-toggle="tab" data-bs-target="#tratamiento" type="button" role="tab" aria-controls="tratamiento" aria-selected="false">Tratamiento</button>
+                        </li>
+                        <li class="nav-item" role="factoresriesgo">
+                          <button class="nav-link" id="factoresriesgo-tab" data-bs-toggle="tab" data-bs-target="#factoresriesgo" type="button" role="tab" aria-controls="factoresriesgo" aria-selected="false">Factores de Riesgo</button>
+                        </li>
+                      </ul>
+                      <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="antecedentes" role="tabpanel" aria-labelledby="antecedentes-tab">
+                            <ul class="list-group mt-2">
+                                <li class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-text btn btn-outline-primary" id="basic-addon1"
+                                            (click)="agregar('antecedentes')"
+                                        >
+                                            <i class="fa-solid fa-add"></i>
+                                        </span>
+                                        <input [formControl]="nombre" type="text" class="form-control" placeholder="Antecedente" aria-label="Antecedente" aria-describedby="basic-addon1" >
+                                    </div>
+                                </li>
+                                <li class="list-group-item" *ngFor="let i of antecedentes">
+                                    <button (click)="eliminar('antecedentes', i.id)" type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                    &nbsp;{{i.nombre}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="medicacionhabitual" role="tabpanel" aria-labelledby="medicacionhabitual-tab">
+                            <ul class="list-group mt-2">
+                                <li class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-text btn btn-outline-primary" id="basic-addon1"
+                                            (click)="agregar('medicacionhabitual')"
+                                        >
+                                            <i class="fa-solid fa-add"></i>
+                                        </span>
+                                        <input [formControl]="nombre" type="text" class="form-control" placeholder="Medicacion Habitual" aria-label="Medicacion Habitual" aria-describedby="basic-addon1" >
+                                    </div>
+                                </li>
+                                <li class="list-group-item" *ngFor="let i of medicacionhabitual">
+                                    <button (click)="eliminar('medicacionhabitual', i.id)" type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                    &nbsp;{{i.nombre}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="tratamiento" role="tabpanel" aria-labelledby="tratamiento-tab">
+                            <ul class="list-group mt-2">
+                                <li class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-text btn btn-outline-primary" id="basic-addon1"
+                                            (click)="agregar('tratamiento')"
+                                        >
+                                            <i class="fa-solid fa-add"></i>
+                                        </span>
+                                        <input [formControl]="nombre" type="text" class="form-control" placeholder="Tratamiento" aria-label="Tratamiento" aria-describedby="basic-addon1" >
+                                    </div>
+                                </li>
+                                <li class="list-group-item" *ngFor="let i of tratamiento">
+                                    <button (click)="eliminar('tratamiento', i.id)" type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                    &nbsp;{{i.nombre}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" id="factoresriesgo" role="tabpanel" aria-labelledby="factoresriesgo-tab">
+                            <ul class="list-group mt-2">
+                                <li class="list-group-item">
+                                    <div class="input-group">
+                                        <span class="input-group-text btn btn-outline-primary" id="basic-addon1"
+                                            (click)="agregar('factoresriesgo')"
+                                        >
+                                            <i class="fa-solid fa-add"></i>
+                                        </span>
+                                        <input [formControl]="nombre" type="text" class="form-control" placeholder="Factores de Riesgo" aria-label="Factores de Riesgo" aria-describedby="basic-addon1" >
+                                    </div>
+                                </li>
+                                <li class="list-group-item" *ngFor="let i of factoresriesgo">
+                                    <button (click)="eliminar('factoresriesgo', i.id)" type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                                    &nbsp;{{i.nombre}}
+                                </li>
+                            </ul>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

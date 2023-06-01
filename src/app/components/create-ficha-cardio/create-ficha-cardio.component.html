@@ -1,0 +1,362 @@
+<div class="container pt-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header ">
+                    <h3 class="text-center">
+                        {{titulo}}
+                        <!-- <div *ngIf="loading" class="spinner-border text-primary float-end" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div> -->
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <!-- <span *ngIf="submitted && createUsuario.invalid" class="badge bg-danger">Todos los campos son obligatorios</span> -->
+                    <form class="mt-1" [formGroup]="createFicha" (submit)="onSubmit()" novalidate>
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h5>Datos Personales</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 mb-1">
+                                            <input type="text" class="form-control" placeholder="Nombre y Apellido" formControlName="nombre" id="nombre">
+                                        </div>
+                                        <div class="col-sm-6 col-md-3 mb-1">
+                                            <input type="number" class="form-control" placeholder="Edad" formControlName="edad" id="edad">
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                            <select class="form-select" formControlName="sexo" id="sexo">
+                                                <option selected value="" disabled>Sexo</option>
+                                                <option value="M">M</option>
+                                                <option value="F">F</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <h5>Ficha Cardiologica</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-3 my-2">
+                                            <label>Dias de Internacion</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3 my-2">
+                                            <input type="number" class="form-control" placeholder="Dias" formControlName="diasinternacion">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-3 my-2">
+                                            <label>Internaciones Previas</label>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3 my-2">
+                                            <input type="number" class="form-control" placeholder="Dias" formControlName="internacionesprevias">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-3 my-2 mb-1">
+                                            <label>Factores De Riesgo</label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-9 my-2 mb-1 form-group">
+                                            <select class="selectpicker form-control" formControlName="factoresriesgo" multiple>
+                                                <option [value]="item" *ngFor="let item of factoresriesgo">{{item}}</option>
+                                          </select>
+                                          <span *ngFor="let item of createFicha.controls['factoresriesgo'].value" class="badge rounded-pill bg-primary">{{item}}</span>  
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-3 my-2">
+                                            <label>Antecedentes</label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-9 my-2 form-group">
+                                            <select class="selectpicker form-control" formControlName="antecedentes" multiple>
+                                                <option [value]="item" *ngFor="let item of antecedentes">{{item}}</option>
+                                          </select>
+                                          <span *ngFor="let item of createFicha.controls['antecedentes'].value" class="badge rounded-pill bg-primary">{{item}}</span>  
+                                        </div>           
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-3 my-2 m">
+                                            <label>Clase Funcional</label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-9 my-2 form-group">
+                                            <div class="form-check form-check-inline">
+                                                <input formControlName="clasefuncional" class="form-check-input" type="radio" id="CF1" value="CF1">
+                                                <label class="form-check-label" for="CF1">CF1</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input formControlName="clasefuncional" class="form-check-input" type="radio" id="CF2" value="CF2">
+                                                <label class="form-check-label" for="CF2">CF2</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input formControlName="clasefuncional" class="form-check-input" type="radio" id="CF3" value="CF3">
+                                                <label class="form-check-label" for="CF3">CF3</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input formControlName="clasefuncional" class="form-check-input" type="radio" id="CF4" value="CF4">
+                                                <label class="form-check-label" for="CF4">CF4</label>
+                                            </div>
+                                        </div>           
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-3 my-2">
+                                            <label>Medicacion Habitual</label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-9 my-2 form-group">
+                                            <select formControlName="medicacionhabitual" class="selectpicker form-control" multiple>
+                                                <option [value]="item" *ngFor="let item of medicacionhabitual">{{item}}</option>
+                                          </select>
+                                          <span *ngFor="let item of createFicha.controls['medicacionhabitual'].value" class="badge rounded-pill bg-primary">{{item}}</span>  
+                                        </div>           
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-3 my-2">
+                                            <label>Forma de Presentacion</label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-9 my-2 form-group">
+                                            <div class="form-check form-check-inline">
+                                                <input formControlName="formapresentacion" class="form-check-input" type="radio" id="FP1" value="Congestion">
+                                                <label class="form-check-label" for="FP1">Congestion</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input formControlName="formapresentacion" class="form-check-input" type="radio" id="FP2" value="Edema Agudo de Pulmon">
+                                                <label class="form-check-label" for="FP2">Edema Agudo de Pulmon</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input formControlName="formapresentacion" class="form-check-input" type="radio" id="FP3" value="Shock cardiogenico">
+                                                <label class="form-check-label" for="FP3">Shock cardiogenico</label>
+                                            </div>
+                                        </div>           
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-3 my-2">
+                                            <label>Causa descompensante</label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-9 my-2 form-group">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" formControlName="causadescompensante" id="CD1" value="Infeccion">
+                                                <label class="form-check-label" for="CD1">Infeccion</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" formControlName="causadescompensante" id="CD2" value="Trasgresion alimentaria">
+                                                <label class="form-check-label" for="CD2">Trasgresion alimentaria</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" formControlName="causadescompensante" id="CD3" value="Suspension medicacion">
+                                                <label class="form-check-label" for="CD3">Suspension medicacion</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" formControlName="causadescompensante" id="CD4" value="Isquemia">
+                                                <label class="form-check-label" for="CD4">Isquemia</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" formControlName="causadescompensante" id="CD5" value="HTA">
+                                                <label class="form-check-label" for="CD5">HTA</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" formControlName="causadescompensante" id="CD6" value="Arritmias">
+                                                <label class="form-check-label" for="CD6">Arritmias</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" formControlName="causadescompensante" id="CD7" value="Anemia">
+                                                <label class="form-check-label" for="CD7">Anemia</label>
+                                            </div>
+                                        </div>           
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 my-2">
+                                            <label>ECG ingreso</label>
+                                        </div>
+                                        <div class="col-md-9 my-2">
+                                            <div class="row">
+                                                <div class="col-md-4 mb-1">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text" id="ritmo">Ritmo</span>
+                                                        <input formControlName="ritmo" type="text" class="form-control" id="ritmo" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-1">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text" id="frecuencia">Frecuencia</span>
+                                                        <input formControlName="frecuencia" type="text" class="form-control" id="frecuencia" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-1">
+                                                    <div class="input-group has-validation">
+                                                        <span class="input-group-text" id="BCRI">BCRI</span>
+                                                        <input formControlName="bcri" type="text" class="form-control" id="BCRI" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row"> 
+                                        <div class="col-sm-12 col-md-3 my-2">
+                                            <label for="FSVI">FSVI</label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-9 my-2">
+                                            <input formControlName="fsvi" type="range" class="form-range" min="20" max="70" value="45" id="FSVI" oninput="this.nextElementSibling.value = this.value">
+                                            <output>45</output>
+                                        </div>
+                                    </div>
+                                    <div class="row"> 
+                                        <div class="col-sm-12 col-md-3 my-2">
+                                            <label for="PSAP">PSAP</label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-9 my-2">
+                                            <input formControlName="psap" type="range" class="form-range" min="20" max="70" value="45" id="PSAP" oninput="this.nextElementSibling.value = this.value">
+                                            <output>45</output>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 my-2">
+                                            <label>Laboratorio</label>
+                                        </div>
+                                        <div class="col-md-9 my-2">
+                                            <div class="row">
+                                                <div class="col-md-6 mb-1">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Hto/Hb</span>
+                                                        <input formControlName="htohb" type="text" class="form-control" id="htoHb" >
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Urea</span>
+                                                        <input formControlName="urea" type="text" class="form-control" id="urea">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <div class="input-group has-validation">
+                                                        <span class="input-group-text">Creatinina</span>
+                                                        <input formControlName="creatinina" type="text" class="form-control" id="Creatinina">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <div class="input-group has-validation">
+                                                        <span class="input-group-text">ProBNP</span>
+                                                        <input formControlName="probnp" type="text" class="form-control" id="ProBNP">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <div class="input-group has-validation">
+                                                        <span class="input-group-text">Troponina US</span>
+                                                        <input formControlName="troponinaus" type="text" class="form-control" id="Troponina US">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <div class="input-group has-validation">
+                                                        <span class="input-group-text">Dimero D</span>
+                                                        <input formControlName="dimerod" type="text" class="form-control" id="Dimero D">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <div class="input-group has-validation">
+                                                        <span class="input-group-text">PCR</span>
+                                                        <input formControlName="pcr" type="text" class="form-control" id="PCR">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <div class="input-group has-validation">
+                                                        <span class="input-group-text">VSG</span>
+                                                        <input formControlName="vsg" type="text" class="form-control" id="VSG">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <div class="input-group has-validation">
+                                                        <span class="input-group-text">Potasio</span>
+                                                        <input formControlName="potasio" type="text" class="form-control" id="Potasio">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <div class="input-group has-validation">
+                                                        <span class="input-group-text">Sodio</span>
+                                                        <input formControlName="sodio" type="text" class="form-control" id="Sodio">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 mb-1">
+                                                    <div class="input-group">
+                                                        <span class="input-group-text">Cloro</span>
+                                                        <input formControlName="cloro" type="text" class="form-control" id="Cloro">
+                                                    </div>
+                                                </div>
+                                            </div>        
+                                        </div>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-3 my-2">
+                                            <label>Tratamiento</label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-9 my-2 form-group">
+                                                <select formControlName="tratamiento" class="selectpicker form-control" multiple>
+                                                    <option [value]="item" *ngFor="let item of tratamiento">{{item}}</option>
+                                              </select>
+                                              <span *ngFor="let item of createFicha.controls['tratamiento'].value" class="badge rounded-pill bg-primary">{{item}}</span>    
+                                        </div>           
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3 my-2">
+                                            <label>Preguntas</label>
+                                        </div>
+                                        <div class="col-md-9 my-2">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-4 my-2 form-group">
+                                                    <div class="form-check">
+                                                        <input formControlName="bcia" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                            Requirió BCIA?
+                                                        </label>
+                                                    </div> 
+                                                </div>   
+                                                <div class="col-sm-12 col-md-4 my-2 form-group">
+                                                    <div class="form-check">
+                                                        <input formControlName="iotarm" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                            Requirió IOT/ARM?
+                                                        </label>
+                                                    </div> 
+                                                </div>  
+                                                <div class="col-sm-12 col-md-4 my-2 form-group">
+                                                    <div class="form-check">
+                                                        <input formControlName="dialisis" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                            Requirió Diálisis?
+                                                        </label>
+                                                    </div> 
+                                                </div>   
+                                                <div class="col-sm-12 col-md-4 my-2 form-group">
+                                                    <div class="form-check">
+                                                        <input formControlName="cditrc" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                            CDI/TRC implantado en la internación
+                                                        </label>
+                                                    </div> 
+                                                </div>  
+                                                <div class="col-sm-12 col-md-4 my-2 form-group">
+                                                    <div class="form-check">
+                                                        <input formControlName="obito" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                            Óbito
+                                                        </label>
+                                                    </div> 
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        <div class="float-end">
+                            <button type="button" class="btn btn-secondary btn-lg me-3" routerLink="/home">Volver</button>
+                            <button type="submit" class="btn btn-dark btn-lg">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

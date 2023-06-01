@@ -1,0 +1,43 @@
+<div class="container my-2">
+    <h2>{{ headerTitle }}</h2>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre" [ngClass]="{ 'is-invalid': nombre!.invalid && (nombre!.dirty || nombre!.touched) }">
+        <div *ngIf="nombre!.invalid && (nombre!.dirty || nombre!.touched)">
+            <small class="text-danger" *ngIf="nombre!.errors!.required">El nombre es requerido.</small>
+        </div>
+      </div>
+
+      <div class="mb-3">
+          <label for="precio" class="form-label">Precio</label>
+          <input type="number" class="form-control" id="precio" formControlName="precio" [ngClass]="{ 'is-invalid': precio!.invalid && (precio!.dirty || precio!.touched) }">
+          <div *ngIf="precio!.invalid && (precio!.dirty || precio!.touched)">
+              <small class="text-danger" *ngIf="precio!.errors!.required">El precio es requerido.</small>
+          </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Descripción</label>
+        <textarea class="form-control" id="description" formControlName="descripcion" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="barcode" class="form-label">Código de Barras</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="barcode" formControlName="barcode" required>
+          <button class="btn btn-secondary" type="button" title="Escanear">
+            <i class="fa-solid fa-citrus fa-xl mx-2"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="isActive" formControlName="activo">
+        <label class="form-check-label" for="isActive">Activo</label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+  </div>

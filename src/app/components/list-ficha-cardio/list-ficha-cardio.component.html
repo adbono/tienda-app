@@ -1,0 +1,139 @@
+<div class="fluid-container">
+    <div class="container-fluid my-2">
+        <div class="row">
+            <div class="col-8"><span class="h3">Listado de Fichas</span></div>
+            <div class="col-4">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="button" class="btn btn-outline-success" (click)="exportExcel()" [ngClass]="{'disabled': fichas.length == 0}">
+                        <i class="fa-solid fa-file-excel fa-lg" ></i>
+                        <span class="d-none d-md-block d-inline-block float-end"> &nbsp;Exportar</span>
+                    </button> 
+                    <button type="button" class="btn btn-outline-primary" routerLink="/create">
+                        <i class="fa-solid fa-circle-plus fa-lg"></i>
+                        <span class="d-none d-md-block d-inline-block float-end"> &nbsp;Agregar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="loading" class="text-center" style="margin-top: 25vh;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+      
+    <div class="card" *ngIf="!loading">
+        <div class="card-body">
+                <div class="table-responsive" >
+                <table  class="table table-hover table-sm">
+                <thead class="table-secondary">
+                  <tr class="align-middle">
+                      <th>Nombre</th>
+                      <th>Edad</th>
+                      <th>Sexo</th>
+                      <th>Inter. Dias</th>
+                      <th>Inter. Previas</th>
+                      <th>Factores de Riesgo</th>
+                      <th>Antecedentes</th>
+                      <th>Clase Funcional</th>
+                      <th>Medicacion Habitual</th>
+                      <th>Forma de Presentacion</th>
+                      <th>Causa Descomp.</th>
+                      <th>ECG Ingreso</th>
+                      <th>Ecocardiograma al Ingreso</th>
+                      <th></th>
+                      <th>Laboratorio</th>
+                      <th></th>
+                      <th>Tratamiento</th>
+                      <th>Preguntas</th>
+                      <th></th>
+                      <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let f of fichas" class="align-middle lh-sm fs-6">
+                    <!-- <td><span 
+                        class="badge text-dark"
+                        data-toggle="tooltip" 
+                        title="{{f.nombre}}"
+                        >{{f.nombre | slice:0:25}}
+                        </span>
+                    </td> -->
+                    <td>{{f.nombre}}</td>
+                    <td>{{f.edad}}</td>
+                    <td>{{f.sexo}}</td>
+                    <td>{{f.diasinternacion}}</td>
+                    <td>{{f.internacionesprevias}}</td>
+                    <td>
+                        <span class="badge rounded-pill bg-primary" *ngFor="let item of f.factoresriesgo">{{item}}</span>
+                    </td>
+                    <td><span class="badge rounded-pill bg-primary" *ngFor="let item of f.antecedentes">{{item}}</span></td>
+                    <td>{{f.clasefuncional}}</td>
+                    <td><span class="badge rounded-pill bg-primary" *ngFor="let item of f.medicacionhabitual">{{item}}</span></td>
+                    <td>{{f.formapresentacion}}</td>
+                    <td>{{f.causadescompensante}}</td>
+                    <td>
+                        <span class="badge text-dark">Ritmo: {{f.ritmo}}</span>
+                        <span class="badge text-dark">Frecuencia: {{f.frecuencia}}</span>
+                        <span class="badge text-dark">BCRI: {{f.bcri}}</span>      
+                    </td>
+                    <td>
+                        <span class="badge text-dark">FSVI: {{f.fsvi}}</span>
+                        <span class="badge text-dark">PSAP: {{f.psap}}</span>
+                    </td>
+                    <td>
+                        <span class="badge text-dark">HTO/HB: {{f.htohb}}</span>
+                        <span class="badge text-dark">Urea: {{f.urea}}</span>
+                        <span class="badge text-dark">Creatinina: {{f.creatinina}}</span>
+                        <span class="badge text-dark">ProBNP: {{f.probnp}}</span>
+                    </td>
+                    <td>
+                        <span class="badge text-dark">Troponina US: {{f.troponinaus}}</span>
+                        <span class="badge text-dark">Dimero D: {{f.dimerod}}</span>
+                        <span class="badge text-dark">PCR: {{f.pcr}}</span>
+                        <span class="badge text-dark">VSG: {{f.vsg}}</span>
+                        
+                    </td>
+                    <td>
+                        <span class="badge text-dark">Sodio: {{f.sodio}}</span>
+                        <span class="badge text-dark">Potasio: {{f.potasio}}</span>
+                        <span class="badge text-dark">Cloro: {{f.cloro}}</span>
+                    </td>
+                    <td><span class="badge rounded-pill bg-primary" *ngFor="let item of f.tratamiento">{{item}}</span></td>
+                    <td>
+                        
+                        <span class="badge text-dark">BCIA: 
+                            <i *ngIf="f.bcia" class="text-success fa-solid fa-circle-check"></i>
+                            <i *ngIf="!f.bcia" class="text-danger fa-solid fa-circle-xmark"></i>
+                        </span>
+                        <span class="badge text-dark">IOT/ARM: 
+                            <i *ngIf="f.iotarm" class="text-success fa-solid fa-circle-check"></i>
+                            <i *ngIf="!f.iotarm" class="text-danger fa-solid fa-circle-xmark"></i>
+                        </span>
+                        <span class="badge text-dark">Dialisis: 
+                            <i *ngIf="f.dialisis" class="text-success fa-solid fa-circle-check"></i>
+                            <i *ngIf="!f.dialisis" class="text-danger fa-solid fa-circle-xmark"></i>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="badge text-dark">CDI/TRC en implantacion?: 
+                            <i *ngIf="f.cditrc" class="text-success fa-solid fa-circle-check"></i>
+                            <i *ngIf="!f.cditrc" class="text-danger fa-solid fa-circle-xmark"></i>
+                        </span>
+                        <span class="badge text-dark">Obito: 
+                            <i *ngIf="f.obito" class="text-success fa-solid fa-circle-check"></i>
+                            <i *ngIf="!f.obito" class="text-danger fa-solid fa-circle-xmark"></i>
+                        </span>
+                    </td>
+                    <td>
+                        <button [routerLink]="['/create/', f.id]" type="button" class="btn btn-sm btn-outline-warning"><i class="fa-solid fa-pen"></i></button>
+                        <button (click)="eliminar(f.id)" type="button" class="btn btn-sm btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+</div>
